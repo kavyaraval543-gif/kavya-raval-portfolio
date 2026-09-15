@@ -50,6 +50,24 @@ body {
   text-wrap: balance;
 }
 
+/* Soft backdrop behind dense text blocks so the generative field reads
+   clearly without competing against letterforms — bleeds slightly beyond
+   the element's own box rather than affecting layout. */
+.scrim {
+  position: relative;
+  isolation: isolate;
+}
+.scrim::before {
+  content: "";
+  position: absolute;
+  inset: -1rem -1.25rem;
+  z-index: -1;
+  background: rgba(10, 10, 9, 0.6);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 1.5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -42,6 +42,31 @@ export default function EvolvingField() {
     let height = 0;
     let dpr = Math.min(2, window.devicePixelRatio || 1);
 
+    function makeSprite(colorRgb: string): HTMLCanvasElement {
+      const size = 96;
+      const off = document.createElement("canvas");
+      off.width = size;
+      off.height = size;
+      const octx = off.getContext("2d")!;
+      const grad = octx.createRadialGradient(
+        size / 2,
+        size / 2,
+        0,
+        size / 2,
+        size / 2,
+        size / 2
+      );
+      grad.addColorStop(0, `rgba(${colorRgb}, 1)`);
+      grad.addColorStop(0.45, `rgba(${colorRgb}, 0.55)`);
+      grad.addColorStop(1, `rgba(${colorRgb}, 0)`);
+      octx.fillStyle = grad;
+      octx.fillRect(0, 0, size, size);
+      return off;
+    }
+
+    const ivorySprite = makeSprite(IVORY);
+    const accentSprite = makeSprite(ACCENT);
+
     const resize = () => {
       width = window.innerWidth;
       height = window.innerHeight;
@@ -50,7 +75,7 @@ export default function EvolvingField() {
       canvas.height = Math.floor(height * dpr);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
-      countRef.current = width < 640 ? 130 : width < 1024 ? 190 : 260;
+      countRef.current = width < 640 ? 190 : width < 1024 ? 280 : 400;
     };
     resize();
     window.addEventListener("resize", resize);
@@ -111,21 +136,20 @@ export default function EvolvingField() {
 
         const px = (p.x + driftX + wobble) * width;
         const py = (p.y + driftY) * height;
-        const radius = Math.max(0.4, p.r * (width < 640 ? 1.1 : 1.4));
+        const radius = Math.max(0.6, p.r * (width < 640 ? 1.5 : 1.9));
+        const d = radius * 3.4;
 
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(${IVORY}, ${p.alpha * 0.85})`;
-        ctx.arc(px, py, radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = Math.min(1, p.alpha);
+        ctx.drawImage(ivorySprite, px - d / 2, py - d / 2, d, d);
 
         if (p.accent > 0.02) {
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(${ACCENT}, ${p.accent * p.alpha})`;
-          ctx.arc(px, py, radius * 0.85, 0, Math.PI * 2);
-          ctx.fill();
+          const da = d * 0.82;
+          ctx.globalAlpha = Math.min(1, p.accent * p.alpha * 1.1);
+          ctx.drawImage(accentSprite, px - da / 2, py - da / 2, da, da);
         }
       }
 
+      ctx.globalAlpha = 1;
       const axisAlpha = Math.max(0, eraFloat - (ERA_COUNT - 2)) * 1;
       drawAxes(Math.min(1, axisAlpha));
 
@@ -161,7 +185,7 @@ export default function EvolvingField() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 opacity-70"
+      className="pointer-events-none fixed inset-0 z-0 opacity-95"
     />
   );
 }
