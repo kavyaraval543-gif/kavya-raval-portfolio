@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kavya Raval — Portfolio
 
-## Getting Started
+Personal resume and data-analytics portfolio site for Kavya Raval, built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+The visual system quietly traces the history of data — from ancient records to modern point-cloud visualization — through a single generative canvas field that reshapes itself as you scroll, without ever naming the concept out loud. Content (experience, projects, skills, certifications) is transcribed directly from the resume in `public/kavya-raval-resume.pdf`.
+
+## Stack
+
+- Next.js 16 (App Router) + TypeScript
+- Tailwind CSS v4
+- Framer Motion for scroll reveals
+- A hand-rolled Canvas 2D particle engine (`src/components/visuals`) — no charting/3D libraries
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/                  # layout, global styles, page
+  components/
+    layout/              # Nav, Footer
+    sections/            # Hero, About, Experience, Skills, Projects, Certifications, ResumeCta, Contact
+    ui/                  # Container, Reveal, SectionHeading, brand icons
+    visuals/              # EvolvingField canvas engine + era pattern generators
+  lib/
+    data.ts               # single source of truth for resume content
+    useScrollProgress.ts, usePrefersReducedMotion.ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Update `src/lib/data.ts` to change any resume content — nothing is hardcoded in the components.
