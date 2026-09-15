@@ -8,6 +8,7 @@
   --color-ivory-faint: #837a6d;
   --color-accent: #e8632c;
   --color-accent-soft: #f4a35f;
+  --color-gold: #c9a24a;
   --color-line: rgba(243, 239, 228, 0.12);
   --color-line-soft: rgba(243, 239, 228, 0.06);
 }
@@ -20,6 +21,7 @@
   --color-ivory-faint: var(--color-ivory-faint);
   --color-accent: var(--color-accent);
   --color-accent-soft: var(--color-accent-soft);
+  --color-gold: var(--color-gold);
   --color-line: var(--color-line);
   --color-line-soft: var(--color-line-soft);
 
