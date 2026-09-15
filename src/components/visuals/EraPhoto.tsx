@@ -16,9 +16,9 @@ export default function EraPhoto({
 }) {
   return (
     <div
-      className={`pointer-events-none absolute inset-y-0 ${
+      className={`pointer-events-none absolute inset-y-0 hidden sm:block ${
         align === "right" ? "right-0" : "left-0"
-      } w-full sm:w-[60%]`}
+      } sm:w-[60%]`}
     >
       <div
         aria-hidden="true"
@@ -34,7 +34,7 @@ export default function EraPhoto({
           src={src}
           alt=""
           fill
-          sizes="(min-width: 640px) 60vw, 100vw"
+          sizes="60vw"
           className="object-cover grayscale sepia-[0.35] contrast-[1.15] saturate-[1.4] opacity-[0.32]"
         />
       </div>

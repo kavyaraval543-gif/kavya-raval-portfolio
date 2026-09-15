@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
+import EraPhoto from "@/components/visuals/EraPhoto";
 import { education, profile } from "@/lib/data";
 
 const facts = [
@@ -13,8 +14,13 @@ const facts = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 sm:py-32">
-      <Container>
+    <section id="about" className="relative overflow-hidden py-24 sm:py-32">
+      <EraPhoto
+        src="/images/era-map.jpg"
+        caption="Cholera Outbreak Map — London, 1854"
+        align="right"
+      />
+      <Container className="relative z-10">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <SectionHeading

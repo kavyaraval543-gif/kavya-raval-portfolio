@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
+import EraPhoto from "@/components/visuals/EraPhoto";
 import { projects, type Project } from "@/lib/data";
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
@@ -71,12 +72,21 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-24 sm:py-32">
       <Container>
-        <SectionHeading
-          index="04"
-          eyebrow="Projects"
-          title="Data investigations"
-          description="Each project starts as a question, not a chart. The dashboard is what's left after the analysis."
-        />
+        <div className="relative overflow-hidden py-2">
+          <EraPhoto
+            src="/images/era-mainframe.jpg"
+            caption="IBM 7090 Computation Center — c. 1960"
+            align="right"
+          />
+          <div className="relative z-10">
+            <SectionHeading
+              index="04"
+              eyebrow="Projects"
+              title="Data investigations"
+              description="Each project starts as a question, not a chart. The dashboard is what's left after the analysis."
+            />
+          </div>
+        </div>
 
         <div className="mt-8">
           {projects.map((project, i) => (
