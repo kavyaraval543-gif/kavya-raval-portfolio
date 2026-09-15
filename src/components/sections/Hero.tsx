@@ -25,10 +25,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-ivory-dim"
+          className="flex items-center gap-3 font-mono text-[13px] uppercase tracking-[0.25em] text-ivory-dim"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          Data Analyst · Available for opportunities
+          Available for opportunities
         </motion.div>
 
         <motion.h1
@@ -41,10 +41,19 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-4 font-display text-2xl font-medium tracking-tight text-accent sm:text-3xl"
+        >
+          Data Analyst
+        </motion.p>
+
+        <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-5 max-w-xl text-lg leading-relaxed text-ivory-dim sm:text-xl"
+          transition={{ duration: 0.7, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-5 max-w-xl text-xl leading-relaxed text-ivory-dim sm:text-2xl"
         >
           {profile.tagline}
         </motion.p>
@@ -53,7 +62,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-ivory-faint"
+          className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-sm uppercase tracking-[0.15em] text-ivory-faint"
         >
           {profile.heroSkills.map((skill, i) => (
             <span key={skill} className="flex items-center gap-6">
@@ -73,11 +82,11 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-ivory px-6 py-3 font-mono text-[13px] uppercase tracking-[0.12em] text-ink transition-transform hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-ivory px-6 py-3.5 font-mono text-sm uppercase tracking-[0.12em] text-ink transition-transform hover:-translate-y-0.5"
           >
             View Projects
             <ArrowUpRight
-              size={15}
+              size={16}
               className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </a>
@@ -85,17 +94,17 @@ export default function Hero() {
             href={profile.resumeHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 font-mono text-[13px] uppercase tracking-[0.12em] text-ivory transition-colors hover:border-accent hover:text-accent"
+            className="group inline-flex items-center gap-2 rounded-full border border-line px-6 py-3.5 font-mono text-sm uppercase tracking-[0.12em] text-ivory transition-colors hover:border-accent hover:text-accent"
           >
             View Resume
             <ArrowUpRight
-              size={15}
+              size={16}
               className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-2 py-3 font-mono text-[13px] uppercase tracking-[0.12em] text-ivory-dim transition-colors hover:text-ivory"
+            className="inline-flex items-center gap-2 px-2 py-3.5 font-mono text-sm uppercase tracking-[0.12em] text-ivory-dim transition-colors hover:text-ivory"
           >
             Contact ↓
           </a>

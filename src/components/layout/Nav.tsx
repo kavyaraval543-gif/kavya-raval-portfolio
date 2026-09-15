@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { nav, profile } from "@/lib/data";
 import Container from "@/components/ui/Container";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function Nav() {
         <nav className="flex h-16 items-center justify-between" aria-label="Primary">
           <a
             href="#top"
-            className="font-mono text-sm font-medium tracking-[0.15em] text-ivory"
+            className="font-mono text-base font-medium tracking-[0.15em] text-ivory"
             onClick={() => setOpen(false)}
           >
             KAVYA<span className="text-accent">.</span>RAVAL
@@ -38,7 +39,7 @@ export default function Nav() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="font-mono text-[13px] uppercase tracking-[0.12em] text-ivory-dim transition-colors hover:text-ivory"
+                  className="font-mono text-[14px] uppercase tracking-[0.12em] text-ivory-dim transition-colors hover:text-ivory"
                 >
                   {item.label}
                 </a>
@@ -46,12 +47,12 @@ export default function Nav() {
             ))}
           </ul>
 
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center gap-3 lg:flex">
             <a
               href={profile.resumeHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 rounded-full border border-accent/60 px-4 py-2 font-mono text-[12px] uppercase tracking-[0.12em] text-accent transition-colors hover:bg-accent hover:text-ink"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-accent/60 px-4 py-2 font-mono text-[13px] uppercase tracking-[0.12em] text-accent transition-colors hover:bg-accent hover:text-ink"
             >
               Resume
               <ArrowUpRight
@@ -59,18 +60,22 @@ export default function Nav() {
                 className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </a>
+            <ThemeToggle />
           </div>
 
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-full border border-line p-2 text-ivory lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <div className="flex items-center gap-3 lg:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-full border border-line p-2 text-ivory"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
         </nav>
       </Container>
 
@@ -85,7 +90,7 @@ export default function Nav() {
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 font-display text-xl text-ivory"
+                  className="block py-3 font-display text-2xl text-ivory"
                 >
                   {item.label}
                 </a>

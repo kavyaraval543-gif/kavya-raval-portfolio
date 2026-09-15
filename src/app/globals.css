@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 :root {
+  /* --color-ink / --color-ivory are the page's background / foreground
+     roles, not fixed "black"/"white" — they invert together under
+     [data-theme="light"], so anything built from this pair (including
+     the intentionally-inverted primary button: ivory fill, ink text)
+     stays correct in both themes without per-component changes. */
   --color-ink: #0a0a09;
   --color-ink-2: #131210;
   --color-ivory: #f3efe4;
@@ -11,6 +16,19 @@
   --color-gold: #c9a24a;
   --color-line: rgba(243, 239, 228, 0.12);
   --color-line-soft: rgba(243, 239, 228, 0.06);
+}
+
+[data-theme="light"] {
+  --color-ink: #faf7f0;
+  --color-ink-2: #efe9dc;
+  --color-ivory: #17140f;
+  --color-ivory-dim: #5c5346;
+  --color-ivory-faint: #78705f;
+  --color-accent: #b8481a;
+  --color-accent-soft: #8f3812;
+  --color-gold: #7d5f18;
+  --color-line: rgba(10, 10, 9, 0.12);
+  --color-line-soft: rgba(10, 10, 9, 0.06);
 }
 
 @theme inline {
@@ -35,6 +53,10 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
 }
 
 body {
@@ -64,7 +86,7 @@ body {
   position: absolute;
   inset: -1rem -1.25rem;
   z-index: -1;
-  background: rgba(10, 10, 9, 0.6);
+  background: color-mix(in srgb, var(--color-ink) 62%, transparent);
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
   border-radius: 1.5rem;

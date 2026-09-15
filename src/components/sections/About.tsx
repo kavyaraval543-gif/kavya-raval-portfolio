@@ -29,10 +29,10 @@ export default function About() {
               title="An analytical builder, not just a dashboard-maker."
             />
             <Reveal delay={0.1} className="mt-8 max-w-xl space-y-5">
-              <p className="text-[15px] leading-relaxed text-ivory-dim">
+              <p className="text-[17px] leading-relaxed text-ivory-dim">
                 {profile.summary}
               </p>
-              <p className="text-[15px] leading-relaxed text-ivory-dim">
+              <p className="text-[17px] leading-relaxed text-ivory-dim">
                 I&apos;m a B.Tech Electronics &amp; Telecommunication Engineering
                 student at MPSTME, NMIMS University, working at the intersection of
                 data analysis and product thinking — pulling signal out of messy
@@ -43,7 +43,7 @@ export default function About() {
 
           <div className="lg:col-span-5 lg:pt-2">
             <Reveal delay={0.15}>
-              <dl className="divide-y divide-line-soft border-y border-line-soft font-mono text-[13px]">
+              <dl className="divide-y divide-line-soft border-y border-line-soft font-mono text-[14px]">
                 {facts.map((f) => (
                   <div
                     key={f.label}

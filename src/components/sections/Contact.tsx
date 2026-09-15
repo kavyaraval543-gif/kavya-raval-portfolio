@@ -30,13 +30,13 @@ export default function Contact() {
     <section id="contact" className="relative py-32 sm:py-44">
       <Container>
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+          <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent">
             07 / Contact
           </p>
-          <h2 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-balance text-ivory sm:text-6xl">
+          <h2 className="mt-5 max-w-3xl font-display text-5xl font-medium leading-[1.05] tracking-tight text-balance text-ivory sm:text-6xl">
             Let&apos;s work with data.
           </h2>
-          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-ivory-dim">
+          <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-ivory-dim">
             Open to Data Analyst and Product Analytics roles. The fastest way
             to reach me is email — I usually reply within a day.
           </p>
@@ -55,12 +55,12 @@ export default function Contact() {
               className="group flex items-center justify-between gap-4 bg-ink px-6 py-6 transition-colors hover:bg-ink-2"
             >
               <span className="flex items-center gap-3">
-                <Icon size={16} className="text-accent" />
+                <Icon size={18} className="text-accent" />
                 <span>
-                  <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-ivory-faint">
+                  <span className="block font-mono text-[11px] uppercase tracking-[0.14em] text-ivory-faint">
                     {label}
                   </span>
-                  <span className="mt-0.5 block text-[14px] text-ivory">{value}</span>
+                  <span className="mt-0.5 block text-[16px] text-ivory">{value}</span>
                 </span>
               </span>
               <ArrowUpRight

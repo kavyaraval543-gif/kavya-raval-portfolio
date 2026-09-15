@@ -35,13 +35,13 @@ export default function EraPhoto({
           alt=""
           fill
           sizes="60vw"
-          className="object-cover grayscale sepia-[0.35] contrast-[1.15] saturate-[1.4] opacity-[0.32]"
+          className="object-cover grayscale sepia-[0.35] contrast-[1.15] saturate-[1.4] opacity-[0.32] [[data-theme=light]_&]:opacity-[0.5] [[data-theme=light]_&]:mix-blend-multiply"
         />
       </div>
       <p
         className={`absolute bottom-6 ${
           align === "right" ? "right-6 text-right" : "left-6 text-left"
-        } max-w-[14rem] font-mono text-[10px] uppercase tracking-[0.14em] text-gold/70`}
+        } max-w-[14rem] font-mono text-[10px] uppercase tracking-[0.14em] text-gold/80`}
       >
         {caption}
       </p>

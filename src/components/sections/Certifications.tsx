@@ -28,8 +28,8 @@ export default function Certifications() {
           title="Credentials"
         />
 
-        <Reveal delay={0.06} className="scrim mt-10 max-w-4xl border-y border-line-soft py-5">
-          <dl className="flex flex-wrap gap-x-10 gap-y-3 font-mono text-[12px]">
+        <Reveal delay={0.06} className="mt-10 max-w-4xl border-y border-line-soft py-5">
+          <dl className="flex flex-wrap gap-x-10 gap-y-3 font-mono text-[13px]">
             {educationFacts.map((f) => (
               <div key={f.label} className="flex items-baseline gap-2">
                 <dt className="uppercase tracking-[0.1em] text-ivory-faint">{f.label}</dt>
@@ -41,17 +41,17 @@ export default function Certifications() {
 
         <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-ivory-faint">
+            <h3 className="font-mono text-sm uppercase tracking-[0.16em] text-ivory-faint">
               Certifications
             </h3>
-            <ul className="scrim mt-5 divide-y divide-line-soft border-t border-line-soft">
+            <ul className="mt-5 divide-y divide-line-soft border-t border-line-soft">
               {certifications.map((cert) => (
                 <li
                   key={cert.name}
                   className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3.5"
                 >
-                  <span className="text-[14px] text-ivory">{cert.name}</span>
-                  <span className="font-mono text-[11.5px] text-ivory-faint">
+                  <span className="text-[16px] text-ivory">{cert.name}</span>
+                  <span className="font-mono text-[12.5px] text-ivory-faint">
                     {cert.org}
                     <span className="mx-2 text-ivory-faint/50">·</span>
                     {cert.period}
@@ -62,12 +62,12 @@ export default function Certifications() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-ivory-faint">
+            <h3 className="font-mono text-sm uppercase tracking-[0.16em] text-ivory-faint">
               Leadership &amp; Achievements
             </h3>
-            <ul className="scrim mt-5 grid grid-cols-1 gap-x-8 gap-y-3.5 border-t border-line-soft pt-3.5 sm:grid-cols-2">
+            <ul className="mt-5 grid grid-cols-1 gap-x-8 gap-y-3.5 border-t border-line-soft pt-3.5 sm:grid-cols-2">
               {highlights.map((item) => (
-                <li key={item.title} className="text-[13px] leading-relaxed text-ivory-dim">
+                <li key={item.title} className="text-[14.5px] leading-relaxed text-ivory-dim">
                   <span className="text-ivory">{item.title}</span>
                   {item.detail && <span className="text-ivory-faint"> — {item.detail}</span>}
                 </li>
