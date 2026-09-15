@@ -96,36 +96,6 @@ export default function EvolvingField() {
     ro.observe(wrapper);
     window.addEventListener("resize", resize);
 
-    function drawAxis(alpha: number) {
-      if (!ctx || alpha <= 0 || width < 40) return;
-      const originX = Math.min(28, width * 0.3);
-      const originY = height - 48;
-      const yLen = Math.min(height * 0.5, 320);
-      const xLen = Math.max(0, width - originX - 14);
-      ctx.save();
-      ctx.globalAlpha = alpha * 0.45;
-      ctx.strokeStyle = `rgba(${colors.fg}, 1)`;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(originX, originY);
-      ctx.lineTo(originX, originY - yLen);
-      ctx.moveTo(originX, originY);
-      ctx.lineTo(originX + xLen, originY);
-      ctx.stroke();
-
-      ctx.fillStyle = `rgba(${colors.fg}, 1)`;
-      ctx.font = "10px var(--font-plex-mono), monospace";
-      ctx.globalAlpha = alpha * 0.55;
-      const steps = Math.min(4, Math.floor(yLen / 70));
-      for (let t = 1; t <= steps; t++) {
-        const ty = originY - (yLen / steps) * t;
-        ctx.fillText(String(t), originX + 5, ty + 3);
-      }
-      ctx.fillText("Y", originX - 3, originY - yLen - 8);
-      if (xLen > 20) ctx.fillText("X", originX + xLen - 4, originY + 14);
-      ctx.restore();
-    }
-
     function draw(time: number) {
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas!.width, canvas!.height);
@@ -157,8 +127,8 @@ export default function EvolvingField() {
         // spread fills the rail's width.
         const px = (p.y + driftY + wobble) * width;
         const py = (p.x + driftX) * height;
-        const radius = Math.max(0.65, p.r * 1.5);
-        const d = radius * 3.4;
+        const radius = Math.max(0.4, p.r * 0.9);
+        const d = radius * 3;
 
         ctx.globalAlpha = Math.min(1, p.alpha);
         ctx.drawImage(fgSprite, px - d / 2, py - d / 2, d, d);
@@ -169,10 +139,6 @@ export default function EvolvingField() {
           ctx.drawImage(accentSprite, px - da / 2, py - da / 2, da, da);
         }
       }
-
-      ctx.globalAlpha = 1;
-      const axisAlpha = Math.max(0, eraFloat - (ERA_COUNT - 2)) * 1;
-      drawAxis(Math.min(1, axisAlpha));
 
       ctx.restore();
     }
@@ -211,7 +177,7 @@ export default function EvolvingField() {
       className="pointer-events-none fixed inset-y-0 left-0 z-0 overflow-hidden"
       style={{ width: "clamp(0px, calc((100vw - 72rem) / 2 - 16px), 220px)" }}
     >
-      <canvas ref={canvasRef} className="opacity-90" />
+      <canvas ref={canvasRef} className="opacity-75" />
     </div>
   );
 }

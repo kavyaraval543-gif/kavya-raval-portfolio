@@ -3,7 +3,6 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
-import EraPhoto from "@/components/visuals/EraPhoto";
 import { profile } from "@/lib/data";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
@@ -13,14 +12,9 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-24 pb-16"
+      className="relative flex min-h-[100svh] flex-col justify-center pt-24 pb-16"
     >
-      <EraPhoto
-        src="/images/era-tablet.jpg"
-        caption="Cuneiform Tablet — c. 2000 BCE"
-        align="right"
-      />
-      <Container className="relative z-10">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

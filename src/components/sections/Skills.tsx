@@ -1,20 +1,14 @@
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import EraPhoto from "@/components/visuals/EraPhoto";
 import { skills } from "@/lib/data";
 
 const categories = Object.entries(skills);
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative overflow-hidden py-24 sm:py-32">
-      <EraPhoto
-        src="/images/era-tabulator.jpg"
-        caption="Tabulating Machine — c. 1890s"
-        align="right"
-      />
-      <Container className="relative z-10">
+    <section id="skills" className="relative py-24 sm:py-32">
+      <Container>
         <SectionHeading
           index="03"
           eyebrow="Skills"
