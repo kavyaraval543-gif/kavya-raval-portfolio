@@ -1,74 +1,53 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import Container from "@/components/ui/Container";
+import ButtonLink from "@/components/ui/ButtonLink";
 import Reveal from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionHeading";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
 import { profile } from "@/lib/data";
 
-const links = [
-  {
-    label: "Email",
-    value: profile.email,
-    href: `mailto:${profile.email}`,
-    icon: Mail,
-  },
-  {
-    label: "LinkedIn",
-    value: "kavya-raval1306",
-    href: profile.linkedin,
-    icon: LinkedinIcon,
-  },
-  {
-    label: "GitHub",
-    value: "kavyaraval543-gif",
-    href: profile.github,
-    icon: GithubIcon,
-  },
-];
-
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-32 sm:py-44">
+    <section id="contact" className="border-t-2 border-ink bg-cobalt py-20 text-paper md:py-28">
       <Container>
         <Reveal>
-          <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent">
-            07 / Contact
-          </p>
-          <h2 className="mt-5 max-w-3xl font-display text-5xl font-medium leading-[1.05] tracking-tight text-balance text-ivory sm:text-6xl">
-            Let&apos;s work with data.
+          <SectionLabel index="06" label="Contact" inverse />
+          <h2 className="mt-6 font-display text-[clamp(3.2rem,11vw,8.5rem)] font-bold leading-[0.86] tracking-[-0.05em]">
+            Let’s work
+            <br />
+            together.
           </h2>
-          <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-ivory-dim">
-            Open to Data Analyst and Product Analytics roles. The fastest way
-            to reach me is email — I usually reply within a day.
+          <p className="mt-7 max-w-xl text-xl leading-relaxed">
+            Open to product and project management roles. Email is the fastest way to reach me.
           </p>
         </Reveal>
 
-        <Reveal
-          delay={0.12}
-          className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line-soft bg-line-soft sm:grid-cols-3"
-        >
-          {links.map(({ label, value, href, icon: Icon }) => (
+        <Reveal className="mt-10" delay={0.08}>
+          <a
+            href={`mailto:${profile.email}`}
+            className="press inline-flex max-w-full items-center gap-3 rounded-lg border-[3px] border-ink bg-paper px-5 py-4 font-display text-xl font-bold tracking-tight text-ink shadow-hard-lg sm:gap-4 sm:px-7 sm:py-5 sm:text-3xl md:text-4xl"
+          >
+            <Mail aria-hidden="true" className="h-6 w-6 shrink-0 sm:h-8 sm:w-8" />
+            <span className="break-all">{profile.email}</span>
+          </a>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <ButtonLink href={profile.linkedin} external variant="butter">
+              <LinkedinIcon size={16} /> LinkedIn
+            </ButtonLink>
+            <ButtonLink href={profile.github} external variant="paper">
+              <GithubIcon size={16} /> GitHub
+            </ButtonLink>
+            <ButtonLink href={profile.resumeHref} external variant="paper">
+              Resume <ArrowUpRight size={16} aria-hidden="true" />
+            </ButtonLink>
             <a
-              key={label}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group flex items-center justify-between gap-4 bg-ink px-6 py-6 transition-colors hover:bg-ink-2"
+              href={`tel:${profile.phone.replace(/-/g, "")}`}
+              className="inline-flex items-center gap-2 px-1 py-2 font-mono text-[13px] font-medium uppercase tracking-[0.08em] underline decoration-2 underline-offset-4 hover:decoration-butter"
             >
-              <span className="flex items-center gap-3">
-                <Icon size={18} className="text-accent" />
-                <span>
-                  <span className="block font-mono text-[11px] uppercase tracking-[0.14em] text-ivory-faint">
-                    {label}
-                  </span>
-                  <span className="mt-0.5 block text-[16px] text-ivory">{value}</span>
-                </span>
-              </span>
-              <ArrowUpRight
-                size={15}
-                className="text-ivory-faint transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-              />
+              <Phone size={15} aria-hidden="true" /> {profile.phone}
             </a>
-          ))}
+          </div>
         </Reveal>
       </Container>
     </section>

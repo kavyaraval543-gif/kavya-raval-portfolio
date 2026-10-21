@@ -1,15 +1,16 @@
 # Kavya Raval — Portfolio
 
-Personal resume and data-analytics portfolio site for Kavya Raval, built with Next.js, TypeScript, and Tailwind CSS.
+Personal portfolio for Kavya Raval, positioned around product & project management, with analytics and technology in support. Built with Next.js, TypeScript and Tailwind CSS.
 
-The visual system quietly traces the history of data — from ancient records to modern point-cloud visualization — through a single generative canvas field that reshapes itself as you scroll, without ever naming the concept out loud. Content (experience, projects, skills, certifications) is transcribed directly from the resume in `public/kavya-raval-resume.pdf`.
+The visual language is light neo-brutalism with an editorial grid: a cream base, cobalt as the signature color, butter/coral/mint as occasional highlights, thick black outlines and hard offset shadows.
 
-## Stack
+## Content
 
-- Next.js 16 (App Router) + TypeScript
-- Tailwind CSS v4
-- Framer Motion for scroll reveals
-- A hand-rolled Canvas 2D particle engine (`src/components/visuals`) — no charting/3D libraries
+All copy lives in `src/lib/data.ts`; components hold no hardcoded resume content.
+
+- Resume content is drawn from Kavya's resumes; the downloadable PDF is `public/kavya-raval-resume.pdf`.
+- The YardFlow case study, including its images in `public/images/yardflow/`, comes from the YardFlow case-study deck and keeps the deck's framing: a retrospective prototype, never deployed, with an unvalidated problem hypothesis.
+- The other project covers are drawn from the real numbers in each project (no mock screenshots).
 
 ## Development
 
@@ -24,15 +25,12 @@ npm run build
 
 ```
 src/
-  app/                  # layout, global styles, page
+  app/                 # layout, global styles (design tokens), page
   components/
-    layout/              # Nav, Footer
-    sections/            # Hero, About, Experience, Skills, Projects, Certifications, ResumeCta, Contact
-    ui/                  # Container, Reveal, SectionHeading, brand icons
-    visuals/              # EvolvingField canvas engine + era pattern generators
+    layout/            # Nav, Footer
+    sections/          # Hero, Marquee, About, Experience, Projects, ProjectCover, Skills, Credentials, Contact
+    ui/                # Container, SectionHeading, ButtonLink, Reveal, brand icons
   lib/
-    data.ts               # single source of truth for resume content
-    useScrollProgress.ts, usePrefersReducedMotion.ts
+    data.ts            # single source of truth for site content
+    usePrefersReducedMotion.ts
 ```
-
-Update `src/lib/data.ts` to change any resume content — nothing is hardcoded in the components.

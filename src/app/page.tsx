@@ -1,13 +1,12 @@
-import EvolvingField from "@/components/visuals/EvolvingField";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
+import Marquee from "@/components/sections/Marquee";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
-import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
-import Certifications from "@/components/sections/Certifications";
-import ResumeCta from "@/components/sections/ResumeCta";
+import Skills from "@/components/sections/Skills";
+import Credentials from "@/components/sections/Credentials";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -15,25 +14,22 @@ export default function Home() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ivory focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-[0.12em] focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:border-2 focus:border-ink focus:bg-butter focus:px-4 focus:py-2 focus:font-mono focus:text-[13px] focus:uppercase"
       >
         Skip to content
       </a>
-      <EvolvingField />
       <Nav />
-      <main id="main" className="relative z-10">
+      <main id="main">
         <Hero />
+        <Marquee />
         <About />
         <Experience />
-        <Skills />
         <Projects />
-        <Certifications />
-        <ResumeCta />
+        <Skills />
+        <Credentials />
         <Contact />
       </main>
-      <div className="relative z-10">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }

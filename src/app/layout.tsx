@@ -21,15 +21,13 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kavya Raval — Data Analyst",
+  title: "Kavya Raval — Product & Project Management",
   description:
-    "Kavya Raval — Data Analyst. SQL, Python, Excel, Tableau. Product analytics, dashboards, and analysis that ships real outcomes.",
+    "Kavya Raval — a product-minded builder who understands technology. Product & project management, analytics, and case studies including YardFlow, CRED and Swiggy.",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
 };
-
-const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.dataset.theme='light';}}catch(e){}})();`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -37,10 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-ink text-ivory font-sans">
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        {children}
-      </body>
+      <body className="flex min-h-full flex-col bg-cream font-sans text-ink">{children}</body>
     </html>
   );
 }

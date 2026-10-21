@@ -1,191 +1,358 @@
-// Single source of truth for site content — transcribed directly from
-// Kavya Raval's resume. Do not add facts, numbers, or claims not present there.
-
 export const profile = {
   name: "Kavya Raval",
-  role: "Data Analyst",
-  rolesLong: "Product Analytics · Data Analytics · Product Management",
-  location: "MPSTME, NMIMS University",
+  role: "Product & Project Management",
+  degree: "B.Tech, Electronics & Telecommunication Engineering",
+  school: "MPSTME, NMIMS University",
+  years: "2023 – 2027",
+  classOf: "2027",
   email: "kavyaraval543@gmail.com",
   phone: "+91-8779827984",
   linkedin: "https://www.linkedin.com/in/kavya-raval1306/",
   github: "https://github.com/kavyaraval543-gif",
   resumeHref: "/kavya-raval-resume.pdf",
-  tagline:
-    "I turn raw data into structured, decision-ready insight — SQL, dashboards, and analysis that ship real outcomes.",
-  summary:
-    "Product- and data-minded builder who turns structured analysis (SQL, Power BI, RICE/MoSCoW) into shipped outcomes — from diagnosing a product trust deficit using 100+ user reviews to leading delivery of a full-stack platform now running 65+ concurrent projects. Comfortable working across the full loop: research, data, prioritization, and execution.",
-  heroSkills: ["SQL", "Python", "Excel", "Tableau"],
-} as const;
+  photo: "/images/kavya-raval.png",
+  intro:
+    "I use customer feedback, data and structured problem-solving to find the real problem, decide what matters most, and ship the fix.",
+  about: [
+    "I'm an Electronics & Telecommunication engineering student at MPSTME, NMIMS, working where product thinking meets technology. My engineering background helps me work closely with developers; product and project work is where I put it to use.",
+    "During my internship at Galaxy Home Automation, I found that project updates were scattered across teams, scoped a single source of truth, and led delivery of the platform that now runs 65+ concurrent projects. Outside work, I write product case studies, from consumer trust at CRED to gate entry at container yards.",
+  ],
+};
 
-export const education = {
-  school: "MPSTME, NMIMS University",
-  degree: "B.Tech, Electronics & Telecommunication Engineering",
-  period: "2023 – 2027",
-  gpa: "3.1 / 4.0",
-} as const;
+export const heroStats = [
+  { value: "65+", label: "concurrent projects on a platform I led delivery of" },
+  { value: "−45%", label: "reporting delays after the new dashboards" },
+  { value: "1–2h", label: "quotation turnaround, down from 4–5h" },
+];
+
+export const marqueeItems = [
+  "Product Management",
+  "Project Management",
+  "Agile / Scrum",
+  "Feature Prioritization",
+  "SQL",
+  "KPI Tracking",
+  "Product Documentation",
+  "Cross-functional Collaboration",
+  "AI Product Concepts",
+];
 
 export const experience = {
   company: "Galaxy Home Automation LLP",
-  teamNote: "20-person team",
-  title: "Project Management Intern",
+  role: "Project Management Intern",
   period: "May 2026 – Jul 2026",
+  team: "20-person team",
   points: [
-    "Analyzed cross-team workflows and stakeholder feedback to scope a platform now running 65+ concurrent projects, cutting manual task-tracking time by 30%",
-    "Built real-time KPI dashboards and automated reporting workflows, replacing scattered updates with a single source of truth and cutting reporting delays by 45%",
-    "Identified a manual bottleneck in the quotation process, then redesigned the workflow with the AI team — cutting turnaround from 4–5 hrs to 1–2 hrs",
+    "Analyzed cross-team workflows and stakeholder feedback, identified scattered project updates as the core problem, and scoped an internal project-tracking platform as a single source of truth.",
+    "Led delivery of the platform, adopted across Sales, AI and Operations, with real-time KPI dashboards, automated notifications and a quotation builder. It now supports 65+ concurrent projects.",
+    "Found a manual bottleneck in the quotation process and redesigned the workflow with the AI team, cutting turnaround from 4–5 hrs to 1–2 hrs. Built and maintained 20+ quotations/BOQs.",
   ],
   metrics: [
-    { value: "65+", label: "concurrent projects" },
-    { value: "30%", label: "less manual tracking time" },
-    { value: "45%", label: "fewer reporting delays" },
-    { value: "4–5h → 1–2h", label: "quotation turnaround" },
+    { value: "65+", label: "concurrent projects tracked" },
+    { value: "−45%", label: "reporting delays" },
+    { value: "−30%", label: "manual task-tracking time" },
+    { value: "1–2h", label: "quotation turnaround, from 4–5h" },
   ],
-} as const;
+};
+
+export type ProjectCover =
+  | { kind: "grid"; total: number; label: string }
+  | {
+      kind: "bars";
+      title: string;
+      bars: { label: string; value: number; display: string }[];
+    }
+  | { kind: "screens"; count: number; label: string }
+  | { kind: "stats"; stats: { value: string; label: string }[] };
 
 export type Project = {
   number: string;
   name: string;
-  tag: string;
-  question: string;
-  data: string;
+  type: string;
+  summary: string;
+  points: string[];
   tools: string[];
-  analysis: string;
-  insight: string;
-  role?: string;
+  cover: ProjectCover;
+  coverAlt: string;
+  tone: "mint" | "coral" | "butter" | "paper" | "cobalt";
+};
+
+export const featuredProject = {
+  number: "01",
+  name: "YardFlow",
+  subtitle: "Digital yard entry and slot management",
+  type: "Product case study · Retrospective",
+  status: ["Prototype · never deployed", "Problem hypothesis · not yet validated"],
+  promise:
+    "Every truck at the gate is either verified and gate-confirmed, or refused or escalated with a logged reason.",
+  problem:
+    "When booking and gate entry don't share data, gate staff can't quickly and reliably confirm that an arriving truck holds a valid booking.",
+  context:
+    "A retrospective case study of a container-yard prototype that was built and demonstrated: slot booking, a staff phone QR scan, a booking check and ESP32 gate control. It was never deployed and the original code is lost, so the screens below are reconstructed concepts from my clickable HTML prototype.",
+  gateImage: {
+    src: "/images/yardflow/gate.png",
+    width: 1440,
+    height: 2520,
+    alt: "Illustration: a watchman in a hi-vis vest scans the QR pass on a truck driver's phone at a closed yard gate.",
+  },
+  screens: [
+    {
+      src: "/images/yardflow/screen-1.png",
+      title: "Pick a free hour",
+      note: "Today or tomorrow. Full hours can't be picked.",
+      who: "Customer",
+    },
+    {
+      src: "/images/yardflow/screen-2.png",
+      title: "Pass goes to the driver",
+      note: "Works only for this truck, in this hour.",
+      who: "Customer",
+    },
+    {
+      src: "/images/yardflow/screen-3.png",
+      title: "Is this the truck?",
+      note: "A QR proves a booking, not the truck.",
+      who: "Watchman",
+    },
+    {
+      src: "/images/yardflow/screen-4.png",
+      title: "Entered only when the gate confirms",
+      note: "Booking and gate status are shown apart.",
+      who: "Watchman",
+    },
+    {
+      src: "/images/yardflow/screen-5.png",
+      title: "Hindi in one tap",
+      note: "No open button on a refusal; plain words for the driver.",
+      who: "Watchman",
+    },
+  ],
+  loopImage: {
+    src: "/images/yardflow/core-loop.png",
+    width: 1950,
+    height: 660,
+    alt: "The core loop: book and get a pass, the watchman scans, the gate confirms, the event is logged.",
+  },
+  decisions: [
+    "A yes/no truck-number check before the gate opens.",
+    "Booking status and gate status shown separately.",
+    "A booking becomes Entered only when the gate controller confirms.",
+    "Refusal screens never show an open button.",
+  ],
+  prioritization:
+    "MoSCoW, not RICE: there's no usage data, so reach and impact scores would be invented. The event log is a Must nobody sees, because no metric or dispute review works without it.",
+  northStar: {
+    name: "Clean verified entry rate",
+    definition:
+      "Entries the gate confirmed on the first command, with a truck-number check, no exception and no manual lookup, divided by all recorded entries. Definitions only: no baselines or targets exist yet.",
+  },
+  gaps: [
+    "No interviews or gate observation yet",
+    "Never tested at a real yard",
+    "Unknown whether the ESP32 confirmed opening",
+    "No usage data, so no baselines or targets",
+  ],
+  lessons: [
+    "The happy path was the easy part; failure states are the product.",
+    "A sent command is not an open gate.",
+    "Design for the real user: a watchman needs one answer, in their own language.",
+    "Measurement has to be designed in from day one.",
+  ],
+  next: "Observe a real gate, interview watchmen and transporters, and test the prototype with 5 people before rebuilding anything.",
+  tools: ["Product Discovery", "User Journeys", "MoSCoW", "HTML Prototype", "ESP32", "Flask", "SQL"],
 };
 
 export const projects: Project[] = [
   {
-    number: "01",
-    name: "CRED Engagement & Trust",
-    tag: "Product Case Study",
-    question:
-      "Why does CRED's gamified reward mechanic underperform on trust with users?",
-    data: "100+ user reviews across App Store, Trustpilot, and product teardowns",
-    tools: ["Qualitative coding", "RICE scoring", "A/B test design"],
-    analysis:
-      "Diagnosed a trust deficit in the gamified reward mechanic, then RICE-scored three candidate fixes to force-rank them by impact vs. effort.",
-    insight:
-      "Top fix scored 144 vs. 77 and 15 for the alternatives — proposed validating it with an A/B test on a 10–15% holdout.",
-  },
-  {
     number: "02",
-    name: "Olist E-Commerce Sales Dashboard",
-    tag: "BI Dashboard",
-    question:
-      "How is revenue distributed across a 9-table e-commerce dataset, and where should the business look first?",
-    data: "99K+ orders, 96K+ customers across a 9-table relational model",
-    tools: ["Power BI", "SQL", "DAX"],
-    analysis:
-      "Modeled the 9-table schema and built DAX measures to surface revenue, order, and customer trends in an interactive BI dashboard.",
-    insight: "Tracked $16M+ in revenue across the full order history.",
+    name: "Project Management System",
+    type: "Galaxy Home Automation CRM · Project Lead",
+    summary:
+      "A full-stack CRM that became the single source of truth for project tracking across Sales, AI and Operations.",
+    points: [
+      "Centralized project tracking, real-time KPI dashboards and automated notifications.",
+      "Added a quotation builder with floor-plan visualization and automated pricing.",
+      "Now running 65+ concurrent projects.",
+    ],
+    tools: ["Next.js", "React", "Python/Flask", "Supabase", "Vercel"],
+    tone: "cobalt",
+    cover: { kind: "grid", total: 65, label: "65+ live projects" },
+    coverAlt: "A grid of 65 tiles, one per concurrent project the platform tracks.",
   },
   {
     number: "03",
-    name: "Credit Card Loan Portfolio — Risk Analysis",
-    tag: "Risk Analysis",
-    question:
-      "What actually drives default in a large consumer credit portfolio?",
-    data: "150K loans, $1.98B portfolio",
-    tools: ["SQL", "Excel risk scorecard"],
-    analysis:
-      "Built a SQL + Excel scorecard segmenting the portfolio by risk factors to isolate the strongest predictor of default.",
-    insight:
-      "Credit utilization was the top default driver (32.5% vs. 6.0%) — proposed underwriting changes projected to cut portfolio losses by ~$60M.",
+    name: "CRED Engagement & Trust",
+    type: "Product case study · Independent",
+    summary: "Diagnosed a trust deficit in CRED's gamified reward mechanic using public data.",
+    points: [
+      "Analyzed 100+ user reviews (App Store, Trustpilot) and product teardowns.",
+      "RICE-scored 3 proposed fixes to decide what to build first.",
+      "Proposed an A/B test on a 10–15% user holdout to validate impact.",
+    ],
+    tools: ["User Research", "RICE", "A/B Test Design"],
+    tone: "coral",
+    cover: {
+      kind: "bars",
+      title: "RICE score by proposed fix",
+      bars: [
+        { label: "Fix 1", value: 144, display: "144" },
+        { label: "Fix 2", value: 77, display: "77" },
+        { label: "Fix 3", value: 15, display: "15" },
+      ],
+    },
+    coverAlt: "Bar chart of RICE scores for three proposed fixes: 144, 77 and 15.",
   },
   {
     number: "04",
-    name: "Project Management System — Galaxy Home Automation CRM",
-    tag: "Full-Stack · Project Lead",
-    role: "Project Lead",
-    question:
-      "Can one platform replace scattered spreadsheets and manual reporting across 65+ live projects?",
-    data: "Live operational data across concurrent client projects, quotations, and KPIs",
-    tools: ["React / Next.js", "Python / Flask", "PostgreSQL / Supabase", "Vercel"],
-    analysis:
-      "Designed and built a full-stack CRM centralizing project tracking, a quotation builder, real-time KPI dashboards, and automated notifications.",
-    insight: "Now running 65+ concurrent projects in production.",
+    name: "Swiggy Smart Group Ordering",
+    type: "Product case study · PRD",
+    summary: "An end-to-end PRD and UI spec for a group-ordering feature.",
+    points: [
+      "Wrote the PRD and a 15-screen UI spec end to end.",
+      "Grounded the feature in competitive research.",
+      "Scoped it with RICE and MoSCoW prioritization.",
+    ],
+    tools: ["PRD", "UI Spec", "Competitive Research", "MoSCoW"],
+    tone: "butter",
+    cover: { kind: "screens", count: 15, label: "15-screen spec" },
+    coverAlt: "Fifteen phone outlines, one per screen in the UI spec.",
   },
   {
     number: "05",
-    name: "AI Equity Trader",
-    tag: "Applied ML · Project Lead",
-    role: "Project Lead",
-    question:
-      "Can short-term trading opportunities be identified systematically from market data rather than discretion?",
-    data: "Live and historical market data via market-data APIs",
-    tools: ["Python", "Market-data APIs", "Git / GitHub"],
-    analysis:
-      "Owned system architecture, trading logic, and data analysis through iterative development, favoring repeated small trades over a single long-term thesis.",
-    insight: "Currently in Phase 5/6 of iterative development.",
+    name: "Credit Card Loan Portfolio",
+    type: "Risk analysis · Synthetic dataset",
+    summary: "A risk scorecard on a synthetic 150K-loan, $1.98B portfolio.",
+    points: [
+      "Found credit utilization to be the top default driver.",
+      "Proposed underwriting changes projected to cut losses by ~$60M.",
+    ],
+    tools: ["SQL", "Excel"],
+    tone: "paper",
+    cover: {
+      kind: "bars",
+      title: "Default rate by credit utilization",
+      bars: [
+        { label: "High utilization", value: 32.5, display: "32.5%" },
+        { label: "Low utilization", value: 6.0, display: "6.0%" },
+      ],
+    },
+    coverAlt: "Bar chart: default rate is 32.5% for high credit utilization versus 6.0% for low.",
+  },
+  {
+    number: "06",
+    name: "Olist E-Commerce Sales Dashboard",
+    type: "BI dashboard",
+    summary: "A Power BI dashboard over a 9-table e-commerce data model.",
+    points: ["Modeled 99K+ orders and 96K+ customers.", "Tracked $16M+ in revenue."],
+    tools: ["Power BI", "SQL", "DAX"],
+    tone: "mint",
+    cover: {
+      kind: "stats",
+      stats: [
+        { value: "99K+", label: "orders" },
+        { value: "96K+", label: "customers" },
+        { value: "$16M+", label: "revenue" },
+        { value: "9", label: "tables" },
+      ],
+    },
+    coverAlt: "Dataset scale: 99K+ orders, 96K+ customers, $16M+ revenue, 9 tables.",
+  },
+];
+
+export const skills = [
+  {
+    label: "Product",
+    items: [
+      "Product Management",
+      "Project Management",
+      "Agile & Scrum",
+      "Product Roadmapping",
+      "Feature Prioritization",
+      "Workflow Optimization",
+      "Cross-functional Collaboration",
+      "Product Documentation",
+    ],
+  },
+  {
+    label: "Analytics",
+    items: [
+      "SQL",
+      "Basic Python",
+      "Machine Learning Fundamentals",
+      "Data Analysis",
+      "KPI & Metrics Tracking",
+    ],
+  },
+  {
+    label: "Technology",
+    items: [
+      "AI Tools & AI Product Concepts",
+      "Next.js, React, JavaScript",
+      "HTML & CSS / Tailwind CSS",
+      "Firebase, Supabase",
+      "Git & GitHub",
+      "IoT & ESP32",
+    ],
+  },
+  {
+    label: "Tools",
+    items: ["Jira", "Canva", "Vercel", "Claude & Generative AI Tools"],
+  },
+];
+
+export const certifications = [
+  { name: "AI Product Management", issuer: "IBM", date: "In progress" },
+  { name: "Product Management Basics", issuer: "SimpliLearn SkillUp", date: "Jul 2026" },
+  { name: "Managing Projects with AI", issuer: "AI CERTs", date: "2026" },
+  { name: "Scrum Fundamentals Certified", issuer: "SCRUMstudy", date: "Mar 2026" },
+  { name: "SQL (Basic & Intermediate)", issuer: "HackerRank", date: "Jul 2026" },
+  { name: "GenAI Powered Data Analytics", issuer: "Tata · Forage", date: "Apr 2026" },
+  { name: "Operations Job Simulation", issuer: "Goldman Sachs · Forage", date: "Jul 2026" },
+  { name: "Project Manager Job Simulation", issuer: "Siemens · Forage", date: "Jan 2026" },
+  { name: "Six Sigma White Belt", issuer: "CSSC", date: "Mar 2026" },
+];
+
+export const achievements = [
+  {
+    title: "Top Teams, Stage 2 — Tata Technologies InnoVent-27",
+    detail: "Selected from 7,000+ project submissions by 20,000+ students across 500+ colleges.",
+  },
+  {
+    title: "1st place — NMIMS Indore inter-campus tech fest",
+    detail: "Represented the Mumbai campus. Also 2nd place in its AI Whisperer competition.",
+  },
+  {
+    title: "91.64 percentile nationally — ISWDP Level 1",
+    detail: "Samsung Semiconductor × IISc × Synopsys.",
+  },
+  {
+    title: "Smart India Hackathon 2024",
+    detail: "Participant, Government of India.",
   },
 ];
 
 export const leadership = [
   {
     role: "Sub-Head, R&D",
-    org: "TechSafar 2026 — State-Level R&D Techfest, IEEE NMIMS MPSTME Student Branch",
-    period: "Apr 2026",
-    note: "Certificate of Appreciation from the Dean",
+    org: "TechSafar 2026 · IEEE NMIMS MPSTME",
+    detail: "State-level R&D techfest. Certificate of Appreciation from the Dean.",
   },
   {
     role: "Organising Committee Member",
-    org: "Taqneeq 18.0 — Tech Fest, NMIMS MPSTME",
-    period: "Mar 2026",
-    note: "Coordinated a 4-day, multi-team fest",
+    org: "Taqneeq 18.0 · NMIMS MPSTME",
+    detail: "Coordinated a 4-day, multi-team tech fest.",
   },
   {
     role: "Advisory Member",
-    org: "Team DARVIN, MPSTME",
-    period: "2026",
-    note: "Supported the team representing NMIMS University at the Intelligent Ground Vehicle Competition (IGVC) 2026, Oakland University, USA",
+    org: "Team DARVIN MPSTME",
+    detail: "Supported the team representing NMIMS at IGVC 2026, Oakland University, USA.",
   },
 ];
 
-export const certifications = [
-  { name: "IBM AI Product Management", org: "IBM", period: "In Progress" },
-  { name: "SQL (Intermediate)", org: "HackerRank", period: "Jul 2026" },
-  { name: "SQL (Basic)", org: "HackerRank", period: "Jul 2026" },
-  { name: "GenAI Powered Data Analytics", org: "Tata (Forage)", period: "Apr 2026" },
-  { name: "Product Management Basics", org: "SimpliLearn SkillUp", period: "Jul 2026" },
-  { name: "Scrum Fundamentals Certified (SFC)", org: "SCRUMstudy", period: "Mar 2026" },
-  { name: "Project Manager Job Simulation", org: "Siemens (Forage)", period: "Jan 2026" },
-] as const;
-
-export const skills = {
-  "Product & Data Analytics": [
-    "SQL",
-    "Power BI",
-    "Tableau",
-    "Python (Pandas, NumPy)",
-    "DAX",
-    "A/B Testing",
-    "RICE / MoSCoW Prioritization",
-    "Exploratory Data Analysis",
-  ],
-  "Cross-Functional & Process": [
-    "Requirements Gathering",
-    "Stakeholder Management",
-    "Agile / Scrum",
-    "Product Roadmaps",
-  ],
-  Tools: ["Excel (Advanced)", "Git / GitHub", "Jira", "Notion", "REST APIs"],
-} as const;
-
-export const achievements = [
-  "Selected among the Top Teams for Stage 2 of Tata Technologies InnoVent-27, out of 7,000+ project submissions from 20,000+ students across 500+ colleges",
-  "Won 1st place at NMIMS Indore's inter-campus tech fest, representing the Mumbai campus",
-  "Secured 2nd place in the AI Whisperer competition at NMIMS Indore's tech fest",
-  "Smart India Hackathon (SIH) 2024 — Participant, Government of India",
-  "Scored 91.64 percentile nationally in ISWDP Level 1 — Samsung Semiconductor x IISc x Synopsys",
-] as const;
-
-export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Contact", href: "#contact" },
-] as const;
+export const navLinks = [
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
+];

@@ -3,38 +3,32 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import { skills } from "@/lib/data";
 
-const categories = Object.entries(skills);
-
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-24 sm:py-32">
+    <section id="skills" className="border-y-2 border-ink bg-paper py-20 md:py-28">
       <Container>
         <SectionHeading
-          index="03"
-          eyebrow="Skills"
-          title="What I work with"
-          description="Grouped the way I actually use them — for analysis, for shipping, and for working across a team."
+          index="04"
+          label="Skills"
+          title="Product-first, technically fluent."
+          intro="Deciding what to build and why, measuring whether it worked, and speaking the language of the people who build it."
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
-          {categories.map(([category, list], colIndex) => (
-            <Reveal key={category} delay={colIndex * 0.08}>
-              <h3 className="font-mono text-sm uppercase tracking-[0.16em] text-accent">
-                {String(colIndex + 1).padStart(2, "0")} / {category}
-              </h3>
-              <ul className="mt-5 divide-y divide-line-soft border-t border-line-soft">
-                {list.map((skill, i) => (
-                  <li
-                    key={skill}
-                    className="flex items-center justify-between gap-4 py-3.5"
-                  >
-                    <span className="text-[16px] text-ivory">{skill}</span>
-                    <span className="font-mono text-[12px] text-ivory-faint">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-16 lg:grid-cols-4">
+          {skills.map((group, i) => (
+            <Reveal key={group.label} delay={i * 0.06} className="h-full">
+              <article className="lift flex h-full flex-col rounded-lg border-[3px] border-ink bg-cream p-6 shadow-hard">
+                <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-cobalt">
+                  {String(i + 1).padStart(2, "0")} / {group.label}
+                </h3>
+                <ul className="mt-5 border-t-2 border-ink">
+                  {group.items.map((item) => (
+                    <li key={item} className="border-b border-ink/20 py-2.5 text-[16px] font-medium leading-snug">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             </Reveal>
           ))}
         </div>
