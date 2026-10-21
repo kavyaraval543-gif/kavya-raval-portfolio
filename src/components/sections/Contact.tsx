@@ -18,7 +18,7 @@ export default function Contact() {
             together.
           </h2>
           <p className="mt-7 max-w-xl text-xl leading-relaxed">
-            Open to product and project management roles. Email is the fastest way to reach me.
+            {profile.availability.long} Email is the fastest way to reach me.
           </p>
         </Reveal>
 

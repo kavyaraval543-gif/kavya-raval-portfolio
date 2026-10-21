@@ -11,11 +11,16 @@ export const profile = {
   github: "https://github.com/kavyaraval543-gif",
   resumeHref: "/kavya-raval-resume.pdf",
   photo: "/images/kavya-raval.jpg",
+  availability: {
+    short: "Seeking a 6-month internship · from 5 Dec 2026",
+    long: "I'm looking for a 6-month internship starting 5 December 2026.",
+  },
   intro:
     "I use customer feedback, data and structured problem-solving to find the real problem, decide what matters most, and ship the fix.",
   about: [
-    "I'm an Electronics & Telecommunication engineering student at MPSTME, NMIMS, working where product thinking meets technology. My engineering background helps me work closely with developers; product and project work is where I put it to use.",
-    "During my internship at Galaxy Home Automation, I found that project updates were scattered across teams, scoped a single source of truth, and led delivery of the platform that now runs 65+ concurrent projects. Outside work, I write product case studies, from consumer trust at CRED to gate entry at container yards.",
+    "I'm a final-year Electronics & Telecommunication Engineering student at MPSTME, NMIMS University, with a product and data mindset. I use customer feedback, analytics and structured problem-solving to identify opportunities and ship solutions.",
+    "As a Project Management Intern at Galaxy Home Automation, I coordinated 65+ concurrent technology projects across Sales, AI and Operations, and led delivery of the internal project-tracking platform that now runs them. I've also written product case studies on yard operations, consumer trust and credit risk.",
+    "I'm comfortable across the full loop of research, data, prioritization and execution, and I work with Jira, Excel, SQL, Power BI, basic Python and Agile/Scrum.",
   ],
 };
 
@@ -82,13 +87,23 @@ export const featuredProject = {
   number: "01",
   name: "YardFlow",
   subtitle: "Digital yard entry and slot management",
-  type: "Product case study · Retrospective",
+  type: "Product case study · Container yards",
   promise:
     "Every truck at the gate is either verified and gate-confirmed, or refused or escalated with a logged reason.",
   problem:
     "When booking and gate entry don't share data, gate staff can't quickly and reliably confirm that an arriving truck holds a valid booking.",
-  context:
-    "A retrospective case study of a container-yard prototype that was built and demonstrated: slot booking, a staff phone QR scan, a booking check and ESP32 gate control. It was never deployed and the original code is lost, so the screens below are reconstructed concepts from my clickable HTML prototype.",
+  users: [
+    {
+      who: "Gate watchman",
+      goal: "Let in only trucks with a valid booking, without arguments.",
+      needs: "One clear answer per truck, big text, Hindi or English, and a safe step when the system fails. Works outdoors, standing, one hand on the phone.",
+    },
+    {
+      who: "Transport operator",
+      goal: "Send a truck knowing it will be accepted.",
+      needs: "A fixed entry hour and a pass that works at the gate. Books ahead, often for several trucks.",
+    },
+  ],
   gateImage: {
     src: "/images/yardflow/gate.png",
     width: 1440,
@@ -140,25 +155,30 @@ export const featuredProject = {
     "Refusal screens never show an open button.",
   ],
   prioritization:
-    "MoSCoW, not RICE: there's no usage data, so reach and impact scores would be invented. The event log is a Must nobody sees, because no metric or dispute review works without it.",
+    "Prioritised with MoSCoW. The Must list is everything verify-and-admit needs to be trustworthy: clear scan results, gate confirmation with retry, the truck-number check, supervisor exceptions, Hindi/English gate screens and an event log, the Must nobody sees, because no metric or dispute review works without it.",
   northStar: {
     name: "Clean verified entry rate",
     definition:
-      "Entries the gate confirmed on the first command, with a truck-number check, no exception and no manual lookup, divided by all recorded entries. Definitions only: no baselines or targets exist yet.",
+      "Entries the gate confirmed on the first command, with a truck-number check, no exception and no manual lookup, divided by all recorded entries. Every metric is computed from the event log.",
   },
-  gaps: [
-    "No interviews or gate observation yet",
-    "Never tested at a real yard",
-    "Unknown whether the ESP32 confirmed opening",
-    "No usage data, so no baselines or targets",
+  failures: [
+    {
+      state: "Rejected",
+      trigger: "Wrong time or wrong truck",
+      handling: "The gate stays shut. A supervisor can approve an exception with their own PIN and a reason.",
+    },
+    {
+      state: "No reply",
+      trigger: "The gate doesn't confirm opening",
+      handling: "The booking stays Booked. Try again, or log a gate fault and use the register.",
+    },
+    {
+      state: "Server down",
+      trigger: "Nothing can be verified",
+      handling: "The gatehouse uses the register book, and entries are reconciled later.",
+    },
   ],
-  lessons: [
-    "The happy path was the easy part; failure states are the product.",
-    "A sent command is not an open gate.",
-    "Design for the real user: a watchman needs one answer, in their own language.",
-    "Measurement has to be designed in from day one.",
-  ],
-  next: "Observe a real gate, interview watchmen and transporters, and test the prototype with 5 people before rebuilding anything.",
+  failureRule: "Software never opens the gate on doubt.",
   tools: ["Product Discovery", "User Journeys", "MoSCoW", "HTML Prototype", "ESP32", "Flask", "SQL"],
 };
 

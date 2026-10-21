@@ -50,12 +50,20 @@ function FeaturedCaseStudy() {
             {yf.promise}
           </p>
 
-          <div className="mt-8 rounded-md border-2 border-dashed border-ink bg-cream p-5">
-            <Label className="text-cobalt">Problem hypothesis · not yet validated</Label>
+          <div className="mt-8 rounded-md border-2 border-ink bg-cream p-5">
+            <Label className="text-cobalt">The problem</Label>
             <p className="mt-2 text-[17px] leading-relaxed">{yf.problem}</p>
           </div>
 
-          <p className="mt-6 text-[16px] leading-relaxed text-charcoal">{yf.context}</p>
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {yf.users.map((u) => (
+              <div key={u.who} className="rounded-md border-2 border-ink bg-paper p-4">
+                <Label className="text-charcoal">{u.who}</Label>
+                <p className="mt-2 text-[15.5px] font-semibold leading-snug">{u.goal}</p>
+                <p className="mt-1.5 text-[14.5px] leading-snug text-charcoal">{u.needs}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <figure className="relative aspect-[4/3] border-t-[3px] border-ink bg-[#eef3f7] lg:col-span-6 lg:aspect-auto lg:border-t-0 lg:border-l-[3px]">
@@ -73,14 +81,14 @@ function FeaturedCaseStudy() {
       </div>
 
       <div className="border-t-[3px] border-ink bg-cobalt px-6 py-10 text-paper md:px-10 md:py-12">
-        <Label className="text-butter">Reconstructed concept · not original screens</Label>
+        <Label className="text-butter">The solution</Label>
         <h4 className="mt-3 max-w-3xl font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl">
           Customer books in three steps; the watchman decides in one tap.
         </h4>
 
         <ol
           tabIndex={0}
-          aria-label="YardFlow prototype screens"
+          aria-label="YardFlow screens"
           className="-mx-6 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:-mx-10 md:px-10 lg:mx-0 lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0"
         >
           {yf.screens.map((s, i) => (
@@ -88,7 +96,7 @@ function FeaturedCaseStudy() {
               <div className="overflow-hidden rounded-xl border-2 border-ink bg-paper shadow-hard">
                 <Image
                   src={s.src}
-                  alt={`YardFlow prototype screen: ${s.title}`}
+                  alt={`YardFlow screen: ${s.title}`}
                   width={800}
                   height={1486}
                   sizes="(min-width: 1024px) 220px, (min-width: 640px) 36vw, 62vw"
@@ -143,37 +151,27 @@ function FeaturedCaseStudy() {
           </div>
         </div>
 
-        <div className="flex flex-col border-t-[3px] border-ink lg:col-span-5 lg:border-t-0">
-          <div className="border-b-[3px] border-ink p-6 md:p-10">
-            <Label className="text-charcoal">Evidence gaps I state openly</Label>
-            <ul className="mt-4 space-y-2.5">
-              {yf.gaps.map((g) => (
-                <li
-                  key={g}
-                  className="rounded-md border-2 border-dashed border-ink bg-cream px-4 py-2.5 text-[15.5px] font-medium"
-                >
-                  {g}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex flex-1 flex-col p-6 md:p-10">
-            <Label className="text-charcoal">What I learned</Label>
-            <ul className="mt-4 space-y-3">
-              {yf.lessons.map((l, i) => (
-                <li key={l} className="flex gap-4 text-[16px] leading-snug">
-                  <span className="font-mono text-[13px] font-medium text-cobalt">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {l}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 rounded-md border-2 border-ink bg-butter p-5">
-              <Label>Next</Label>
-              <p className="mt-2 text-[16px] font-medium leading-snug">{yf.next}</p>
-            </div>
-          </div>
+        <div className="flex flex-col border-t-[3px] border-ink p-6 md:p-10 lg:col-span-5 lg:border-t-0">
+          <Label className="text-cobalt">Reliability</Label>
+          <h4 className="mt-3 font-display text-2xl font-bold leading-tight tracking-tight md:text-3xl">
+            Every failure has a defined state.
+          </h4>
+          <ul className="mt-6 space-y-4">
+            {yf.failures.map((f) => (
+              <li key={f.state} className="rounded-md border-2 border-ink bg-cream p-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                  <p className="font-display text-lg font-bold">{f.state}</p>
+                  <p className="font-mono text-[11.5px] font-medium uppercase tracking-[0.1em] text-charcoal">
+                    {f.trigger}
+                  </p>
+                </div>
+                <p className="mt-1.5 text-[15px] leading-snug">{f.handling}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 rounded-md border-2 border-ink bg-butter p-5 font-display text-xl font-bold leading-snug">
+            {yf.failureRule}
+          </p>
         </div>
       </div>
 
@@ -257,7 +255,7 @@ export default function Projects() {
               Selected work<span className="text-cobalt">.</span>
             </>
           }
-          intro="Case studies and builds. Each one starts with a problem, and says plainly what was proven and what wasn't."
+          intro="Case studies and builds. Each one starts with a problem, not a solution."
         />
 
         <Reveal className="mt-12 md:mt-16">

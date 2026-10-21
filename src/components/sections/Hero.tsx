@@ -10,9 +10,9 @@ export default function Hero() {
       <Container className="grid grid-cols-1 gap-12 pt-10 pb-14 sm:pt-14 md:pb-20 lg:grid-cols-12 lg:gap-10 lg:pt-20">
         <div className="lg:col-span-8">
           <p className="flex flex-wrap items-center gap-3 font-mono text-[13px] font-medium uppercase tracking-[0.14em]">
-            <span className="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-butter px-2.5 py-1">
-              <span className="h-2 w-2 rounded-full bg-ink" aria-hidden="true" />
-              Open to opportunities
+            <span className="inline-flex items-start gap-2 rounded-md border-2 border-ink bg-butter px-2.5 py-1">
+              <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-ink" aria-hidden="true" />
+              {profile.availability.short}
             </span>
             <span className="text-charcoal">B.Tech EXTC · Class of {profile.classOf}</span>
           </p>
