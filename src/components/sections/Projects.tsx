@@ -34,18 +34,8 @@ function Chips({ items }: { items: string[] }) {
 function FeaturedCaseStudy() {
   return (
     <article className="overflow-hidden rounded-lg border-[3px] border-ink bg-paper shadow-hard-lg">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b-[3px] border-ink bg-ink px-5 py-3 text-paper md:px-8">
+      <div className="border-b-[3px] border-ink bg-ink px-5 py-3 text-paper md:px-8">
         <Label>{`${yf.number} — Featured case study`}</Label>
-        <ul className="flex flex-wrap gap-2">
-          {yf.status.map((s) => (
-            <li
-              key={s}
-              className="rounded-md bg-butter px-2 py-0.5 font-mono text-[11.5px] font-medium uppercase tracking-[0.1em] text-ink"
-            >
-              {s}
-            </li>
-          ))}
-        </ul>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12">
@@ -206,7 +196,7 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
         project={project}
         className={
           wide
-            ? `${fixedHeight ? "h-72 lg:h-auto" : ""} shrink-0 border-b-[3px] border-ink lg:w-7/12 lg:border-r-[3px] lg:border-b-0`
+            ? `${fixedHeight ? "h-72 lg:h-auto lg:w-1/2" : "lg:w-7/12"} shrink-0 border-b-[3px] border-ink lg:border-r-[3px] lg:border-b-0`
             : `${fixedHeight ? "h-72" : ""} shrink-0 border-b-[3px] border-ink`
         }
       />
@@ -248,11 +238,11 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
 }
 
 const layout = [
-  { span: "lg:col-span-7" },
-  { span: "lg:col-span-5" },
-  { span: "lg:col-span-5" },
-  { span: "lg:col-span-7" },
   { span: "md:col-span-2 lg:col-span-12", wide: true },
+  { span: "md:col-span-2 lg:col-span-12", wide: true },
+  { span: "lg:col-span-4" },
+  { span: "lg:col-span-4" },
+  { span: "md:col-span-2 lg:col-span-4" },
 ];
 
 export default function Projects() {

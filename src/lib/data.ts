@@ -83,7 +83,6 @@ export const featuredProject = {
   name: "YardFlow",
   subtitle: "Digital yard entry and slot management",
   type: "Product case study · Retrospective",
-  status: ["Prototype · never deployed", "Problem hypothesis · not yet validated"],
   promise:
     "Every truck at the gate is either verified and gate-confirmed, or refused or escalated with a logged reason.",
   problem:
@@ -232,65 +231,6 @@ export const galaxyProject = {
 export const projects: Project[] = [
   {
     number: "03",
-    name: "CRED Engagement & Trust",
-    type: "Product case study · Independent",
-    summary: "Diagnosed a trust deficit in CRED's gamified reward mechanic using public data.",
-    points: [
-      "Analyzed 100+ user reviews (App Store, Trustpilot) and product teardowns.",
-      "RICE-scored 3 proposed fixes to decide what to build first.",
-      "Proposed an A/B test on a 10–15% user holdout to validate impact.",
-    ],
-    tools: ["User Research", "RICE", "A/B Test Design"],
-    tone: "coral",
-    cover: {
-      kind: "bars",
-      title: "RICE score by proposed fix",
-      bars: [
-        { label: "Fix 1", value: 144, display: "144" },
-        { label: "Fix 2", value: 77, display: "77" },
-        { label: "Fix 3", value: 15, display: "15" },
-      ],
-    },
-    coverAlt: "Bar chart of RICE scores for three proposed fixes: 144, 77 and 15.",
-  },
-  {
-    number: "04",
-    name: "Swiggy Smart Group Ordering",
-    type: "Product case study · PRD",
-    summary: "An end-to-end PRD and UI spec for a group-ordering feature.",
-    points: [
-      "Wrote the PRD and a 15-screen UI spec end to end.",
-      "Grounded the feature in competitive research.",
-      "Scoped it with RICE and MoSCoW prioritization.",
-    ],
-    tools: ["PRD", "UI Spec", "Competitive Research", "MoSCoW"],
-    tone: "butter",
-    cover: { kind: "screens", count: 15, label: "15-screen spec" },
-    coverAlt: "Fifteen phone outlines, one per screen in the UI spec.",
-  },
-  {
-    number: "05",
-    name: "Credit Card Loan Portfolio",
-    type: "Risk analysis · Synthetic dataset",
-    summary: "A risk scorecard on a synthetic 150K-loan, $1.98B portfolio.",
-    points: [
-      "Found credit utilization to be the top default driver.",
-      "Proposed underwriting changes projected to cut losses by ~$60M.",
-    ],
-    tools: ["SQL", "Excel"],
-    tone: "paper",
-    cover: {
-      kind: "bars",
-      title: "Default rate by credit utilization",
-      bars: [
-        { label: "High utilization", value: 32.5, display: "32.5%" },
-        { label: "Low utilization", value: 6.0, display: "6.0%" },
-      ],
-    },
-    coverAlt: "Bar chart: default rate is 32.5% for high credit utilization versus 6.0% for low.",
-  },
-  {
-    number: "06",
     name: "AI Equity Trader — Adaptive SIP",
     type: "Research project · Project Lead",
     summary:
@@ -313,7 +253,7 @@ export const projects: Project[] = [
     href: "https://github.com/kavyaraval543-gif/ai-equity-trader",
   },
   {
-    number: "07",
+    number: "04",
     name: "Olist E-Commerce Sales Dashboard",
     type: "BI dashboard · Power BI",
     summary: "A Power BI dashboard over a 9-table model of 99K+ orders from 96K+ customers.",
@@ -327,6 +267,65 @@ export const projects: Project[] = [
     cover: { kind: "image", src: "/images/olist/dashboard.png", width: 956, height: 537 },
     coverAlt:
       "Screenshot of the Olist Power BI dashboard: KPI cards, top 5 product categories by sales, order status distribution, monthly order trend and revenue by customer state.",
+  },
+  {
+    number: "05",
+    name: "CRED Engagement & Trust",
+    type: "Product case study · Independent",
+    summary: "Diagnosed a trust deficit in CRED's gamified reward mechanic using public data.",
+    points: [
+      "Analyzed 100+ user reviews (App Store, Trustpilot) and product teardowns.",
+      "RICE-scored 3 proposed fixes to decide what to build first.",
+      "Proposed an A/B test on a 10–15% user holdout to validate impact.",
+    ],
+    tools: ["User Research", "RICE", "A/B Test Design"],
+    tone: "coral",
+    cover: {
+      kind: "bars",
+      title: "RICE score by proposed fix",
+      bars: [
+        { label: "Fix 1", value: 144, display: "144" },
+        { label: "Fix 2", value: 77, display: "77" },
+        { label: "Fix 3", value: 15, display: "15" },
+      ],
+    },
+    coverAlt: "Bar chart of RICE scores for three proposed fixes: 144, 77 and 15.",
+  },
+  {
+    number: "06",
+    name: "Swiggy Smart Group Ordering",
+    type: "Product case study · PRD",
+    summary: "An end-to-end PRD and UI spec for a group-ordering feature.",
+    points: [
+      "Wrote the PRD and a 15-screen UI spec end to end.",
+      "Grounded the feature in competitive research.",
+      "Scoped it with RICE and MoSCoW prioritization.",
+    ],
+    tools: ["PRD", "UI Spec", "Competitive Research", "MoSCoW"],
+    tone: "butter",
+    cover: { kind: "screens", count: 15, label: "15-screen spec" },
+    coverAlt: "Fifteen phone outlines, one per screen in the UI spec.",
+  },
+  {
+    number: "07",
+    name: "Credit Card Loan Portfolio",
+    type: "Risk analysis · Synthetic dataset",
+    summary: "A risk scorecard on a synthetic 150K-loan, $1.98B portfolio.",
+    points: [
+      "Found credit utilization to be the top default driver.",
+      "Proposed underwriting changes projected to cut losses by ~$60M.",
+    ],
+    tools: ["SQL", "Excel"],
+    tone: "paper",
+    cover: {
+      kind: "bars",
+      title: "Default rate by credit utilization",
+      bars: [
+        { label: "High utilization", value: 32.5, display: "32.5%" },
+        { label: "Low utilization", value: 6.0, display: "6.0%" },
+      ],
+    },
+    coverAlt: "Bar chart: default rate is 32.5% for high credit utilization versus 6.0% for low.",
   },
 ];
 
