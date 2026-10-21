@@ -49,10 +49,11 @@ export default function Hero() {
               <Image
                 src={profile.photo}
                 alt="Portrait of Kavya Raval"
-                width={313}
-                height={327}
+                width={640}
+                height={669}
+                sizes="(min-width: 640px) 320px, 260px"
                 preload
-                className="aspect-[313/327] w-full object-cover"
+                className="aspect-[640/669] w-full object-cover"
               />
               <figcaption className="flex items-center justify-between gap-3 border-t-[3px] border-ink bg-paper px-4 py-3 font-mono text-[12px] font-medium uppercase tracking-[0.12em]">
                 <span>{profile.school.split(",")[0]}, NMIMS</span>

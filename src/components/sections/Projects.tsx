@@ -1,8 +1,11 @@
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
+import { GithubIcon } from "@/components/ui/BrandIcons";
 import ProjectCover from "./ProjectCover";
+import GalaxyCaseStudy from "./GalaxyCaseStudy";
 import { featuredProject as yf, projects, type Project } from "@/lib/data";
 
 function Label({ children, className = "" }: { children: string; className?: string }) {
@@ -192,6 +195,7 @@ function FeaturedCaseStudy() {
 }
 
 function ProjectCard({ project, wide = false }: { project: Project; wide?: boolean }) {
+  const fixedHeight = project.cover.kind !== "image";
   return (
     <article
       className={`lift flex h-full overflow-hidden rounded-lg border-[3px] border-ink bg-paper shadow-hard ${
@@ -202,8 +206,8 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
         project={project}
         className={
           wide
-            ? "h-72 shrink-0 border-b-[3px] border-ink lg:h-auto lg:w-5/12 lg:border-r-[3px] lg:border-b-0"
-            : "h-72 shrink-0 border-b-[3px] border-ink"
+            ? `${fixedHeight ? "h-72 lg:h-auto" : ""} shrink-0 border-b-[3px] border-ink lg:w-7/12 lg:border-r-[3px] lg:border-b-0`
+            : `${fixedHeight ? "h-72" : ""} shrink-0 border-b-[3px] border-ink`
         }
       />
       <div className="flex flex-1 flex-col p-6 md:p-8">
@@ -225,15 +229,31 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
             </li>
           ))}
         </ul>
-        <div className="mt-auto pt-6">
+        <div className="mt-auto flex flex-col gap-5 pt-6">
           <Chips items={project.tools} />
+          {project.href && (
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press inline-flex items-center gap-2 self-start rounded-md border-2 border-ink bg-butter px-3.5 py-2 font-mono text-[12px] font-medium uppercase tracking-[0.08em] shadow-hard-sm"
+            >
+              <GithubIcon size={14} /> View on GitHub <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          )}
         </div>
       </div>
     </article>
   );
 }
 
-const spans = ["md:col-span-2 lg:col-span-12", "lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7"];
+const layout = [
+  { span: "lg:col-span-7" },
+  { span: "lg:col-span-5" },
+  { span: "lg:col-span-5" },
+  { span: "lg:col-span-7" },
+  { span: "md:col-span-2 lg:col-span-12", wide: true },
+];
 
 export default function Projects() {
   return (
@@ -254,10 +274,14 @@ export default function Projects() {
           <FeaturedCaseStudy />
         </Reveal>
 
+        <Reveal className="mt-8">
+          <GalaxyCaseStudy />
+        </Reveal>
+
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12">
           {projects.map((project, i) => (
-            <Reveal key={project.number} className={spans[i]}>
-              <ProjectCard project={project} wide={i === 0} />
+            <Reveal key={project.number} className={layout[i]?.span}>
+              <ProjectCard project={project} wide={layout[i]?.wide} />
             </Reveal>
           ))}
         </div>

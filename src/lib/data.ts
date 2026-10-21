@@ -10,7 +10,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/kavya-raval1306/",
   github: "https://github.com/kavyaraval543-gif",
   resumeHref: "/kavya-raval-resume.pdf",
-  photo: "/images/kavya-raval.png",
+  photo: "/images/kavya-raval.jpg",
   intro:
     "I use customer feedback, data and structured problem-solving to find the real problem, decide what matters most, and ship the fix.",
   about: [
@@ -56,14 +56,14 @@ export const experience = {
 };
 
 export type ProjectCover =
-  | { kind: "grid"; total: number; label: string }
   | {
       kind: "bars";
       title: string;
       bars: { label: string; value: number; display: string }[];
     }
   | { kind: "screens"; count: number; label: string }
-  | { kind: "stats"; stats: { value: string; label: string }[] };
+  | { kind: "pipeline"; steps: string[]; highlight: string; label: string }
+  | { kind: "image"; src: string; width: number; height: number };
 
 export type Project = {
   number: string;
@@ -75,6 +75,7 @@ export type Project = {
   cover: ProjectCover;
   coverAlt: string;
   tone: "mint" | "coral" | "butter" | "paper" | "cobalt";
+  href?: string;
 };
 
 export const featuredProject = {
@@ -162,23 +163,73 @@ export const featuredProject = {
   tools: ["Product Discovery", "User Journeys", "MoSCoW", "HTML Prototype", "ESP32", "Flask", "SQL"],
 };
 
+export const galaxyProject = {
+  number: "02",
+  name: "Galaxy Home Automation CRM",
+  subtitle: "Project management & operations platform",
+  type: "Internship build · Project Lead",
+  status: "In use · 65+ concurrent projects",
+  summary:
+    "An internal platform that centralizes project tracking, customer management, quotations, daily reporting and team workflows for a home automation business, in one place instead of scattered tools.",
+  problem: [
+    "Project information was scattered across multiple tools.",
+    "Teams lacked a single view of project progress.",
+    "Quotations and operational updates were hard to track.",
+    "Daily reporting and approvals needed manual follow-up.",
+  ],
+  contributions: [
+    "Translated operational requirements into product features.",
+    "Worked with stakeholders to refine workflows.",
+    "Designed the interfaces for project tracking, quotations, notifications and reporting.",
+    "Built and improved key modules, iterating on internal feedback.",
+  ],
+  tools: ["Next.js", "React", "Python/Flask", "Supabase", "Vercel"],
+  dataNote: "Screens use anonymized sample data",
+  screens: [
+    {
+      id: "quotation-builder",
+      label: "Quotation Builder",
+      src: "/images/galaxy/quotation-builder.jpg",
+      width: 1802,
+      height: 853,
+      note: "Products are placed directly onto the client's floor plan, and pricing and the proposal are generated from it.",
+    },
+    {
+      id: "projects",
+      label: "Projects",
+      src: "/images/galaxy/projects.jpg",
+      width: 1802,
+      height: 863,
+      note: "Every project from creation to completion, with progress, status, stages and search shared across departments.",
+    },
+    {
+      id: "notifications",
+      label: "Notifications",
+      src: "/images/galaxy/notifications.jpg",
+      width: 1802,
+      height: 856,
+      note: "Approvals, pending actions and project events in one place, so updates don't get missed.",
+    },
+    {
+      id: "daily-reports",
+      label: "Daily Reports",
+      src: "/images/galaxy/daily-reports.jpg",
+      width: 1802,
+      height: 868,
+      note: "End-of-day reporting goes digital, with the day's quotation and project activity tracked automatically.",
+    },
+    {
+      id: "dashboard",
+      label: "Dashboard",
+      src: "/images/galaxy/dashboard.jpg",
+      width: 1802,
+      height: 867,
+      note: "One operational view of projects, customers and reports for each team member.",
+    },
+  ],
+};
+
 export const projects: Project[] = [
-  {
-    number: "02",
-    name: "Project Management System",
-    type: "Galaxy Home Automation CRM · Project Lead",
-    summary:
-      "A full-stack CRM that became the single source of truth for project tracking across Sales, AI and Operations.",
-    points: [
-      "Centralized project tracking, real-time KPI dashboards and automated notifications.",
-      "Added a quotation builder with floor-plan visualization and automated pricing.",
-      "Now running 65+ concurrent projects.",
-    ],
-    tools: ["Next.js", "React", "Python/Flask", "Supabase", "Vercel"],
-    tone: "cobalt",
-    cover: { kind: "grid", total: 65, label: "65+ live projects" },
-    coverAlt: "A grid of 65 tiles, one per concurrent project the platform tracks.",
-  },
   {
     number: "03",
     name: "CRED Engagement & Trust",
@@ -240,22 +291,42 @@ export const projects: Project[] = [
   },
   {
     number: "06",
+    name: "AI Equity Trader — Adaptive SIP",
+    type: "Research project · Project Lead",
+    summary:
+      "Tested whether adaptive allocations could beat a conventional SIP on five Indian stocks and the Nifty 50.",
+    points: [
+      "Compared a rule-based baseline with ML models in an 8-year walk-forward backtest.",
+      "Built a paper-trading platform around the research, with strategies, a risk engine no trade can bypass, and backtesting dashboards.",
+      "Result: the adaptive strategy did not outperform the SIP.",
+    ],
+    tools: ["Python", "FastAPI", "Next.js", "PostgreSQL", "Machine Learning"],
+    tone: "cobalt",
+    cover: {
+      kind: "pipeline",
+      steps: ["Market data", "Strategy", "Signal", "Risk engine", "Execution", "Portfolio", "Dashboard"],
+      highlight: "Risk engine",
+      label: "Paper trading only",
+    },
+    coverAlt:
+      "System pipeline: market data, strategy, signal, risk engine, execution, portfolio, dashboard. Every trade passes the risk engine; paper trading only.",
+    href: "https://github.com/kavyaraval543-gif/ai-equity-trader",
+  },
+  {
+    number: "07",
     name: "Olist E-Commerce Sales Dashboard",
-    type: "BI dashboard",
-    summary: "A Power BI dashboard over a 9-table e-commerce data model.",
-    points: ["Modeled 99K+ orders and 96K+ customers.", "Tracked $16M+ in revenue."],
+    type: "BI dashboard · Power BI",
+    summary: "A Power BI dashboard over a 9-table model of 99K+ orders from 96K+ customers.",
+    points: [
+      "Tracks 16M+ in revenue, order status, the monthly order trend and an average review score of 4.09.",
+      "Health & beauty leads product categories by sales; São Paulo leads revenue by customer state.",
+      "Filterable by year, 2016–2018.",
+    ],
     tools: ["Power BI", "SQL", "DAX"],
     tone: "mint",
-    cover: {
-      kind: "stats",
-      stats: [
-        { value: "99K+", label: "orders" },
-        { value: "96K+", label: "customers" },
-        { value: "$16M+", label: "revenue" },
-        { value: "9", label: "tables" },
-      ],
-    },
-    coverAlt: "Dataset scale: 99K+ orders, 96K+ customers, $16M+ revenue, 9 tables.",
+    cover: { kind: "image", src: "/images/olist/dashboard.png", width: 956, height: 537 },
+    coverAlt:
+      "Screenshot of the Olist Power BI dashboard: KPI cards, top 5 product categories by sales, order status distribution, monthly order trend and revenue by customer state.",
   },
 ];
 

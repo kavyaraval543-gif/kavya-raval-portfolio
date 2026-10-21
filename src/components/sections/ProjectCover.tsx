@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Project, ProjectCover as Cover } from "@/lib/data";
 
 const toneBg: Record<Project["tone"], string> = {
@@ -18,19 +19,6 @@ function Tag({ children }: { children: string }) {
 
 function CoverBody({ cover, tone }: { cover: Cover; tone: Project["tone"] }) {
   switch (cover.kind) {
-    case "grid":
-      return (
-        <div className="flex h-full flex-col justify-center gap-5 p-6">
-          <div className="grid grid-cols-13 gap-1.5">
-            {Array.from({ length: cover.total }, (_, i) => (
-              <span key={i} className="aspect-square rounded-[3px] border-[1.5px] border-ink bg-paper" />
-            ))}
-          </div>
-          <div className="self-start">
-            <Tag>{cover.label}</Tag>
-          </div>
-        </div>
-      );
     case "bars": {
       const max = Math.max(...cover.bars.map((b) => b.value));
       const fill = tone === "coral" ? "bg-ink" : "bg-cobalt";
@@ -74,23 +62,45 @@ function CoverBody({ cover, tone }: { cover: Cover; tone: Project["tone"] }) {
           <Tag>{cover.label}</Tag>
         </div>
       );
-    case "stats":
+    case "pipeline":
       return (
-        <dl className="grid h-full grid-cols-2 gap-3 p-6">
-          {cover.stats.map((s) => (
-            <div
-              key={s.label}
-              className="flex flex-col justify-between rounded-md border-2 border-ink bg-paper px-4 py-3"
-            >
-              <dt className="order-2 font-mono text-[11.5px] font-medium uppercase tracking-[0.14em] text-charcoal">
-                {s.label}
-              </dt>
-              <dd className="order-1 font-display text-3xl font-bold tracking-tight text-ink">
-                {s.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <div className="flex h-full flex-col justify-center gap-5 p-6">
+          <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-2.5">
+            {cover.steps.map((step, i) => (
+              <li key={step} className="flex items-center gap-1.5">
+                <span
+                  className={`rounded-md border-2 border-ink px-2.5 py-1.5 text-[13px] font-semibold leading-none text-ink ${
+                    step === cover.highlight ? "bg-butter shadow-hard-sm" : "bg-paper"
+                  }`}
+                >
+                  {step}
+                </span>
+                {i < cover.steps.length - 1 && (
+                  <span className="font-display text-lg font-bold text-paper">→</span>
+                )}
+              </li>
+            ))}
+          </ol>
+          <p className="max-w-xs text-[14px] font-medium leading-snug text-paper">
+            Every trade has to pass the risk engine. Nothing bypasses it.
+          </p>
+          <div className="self-start">
+            <Tag>{cover.label}</Tag>
+          </div>
+        </div>
+      );
+    case "image":
+      return (
+        <div className="flex h-full items-center justify-center p-5 md:p-6">
+          <Image
+            src={cover.src}
+            alt=""
+            width={cover.width}
+            height={cover.height}
+            sizes="(min-width: 1024px) 640px, 100vw"
+            className="h-auto w-full rounded-md border-2 border-ink bg-paper shadow-hard-sm"
+          />
+        </div>
       );
   }
 }
