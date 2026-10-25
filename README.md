@@ -2,6 +2,8 @@
 
 Personal portfolio for Kavya Raval, positioned around product & project management, with analytics and technology in support. Built with Next.js, TypeScript and Tailwind CSS.
 
+**Live site:** <https://kavya-raval-portfolio.vercel.app> · **Status:** deployed, actively maintained · static content, no backend or environment variables
+
 The visual language is light neo-brutalism with an editorial grid: a cream base, cobalt as the signature color, butter/coral/mint as occasional highlights, thick black outlines and hard offset shadows.
 
 ## Content
